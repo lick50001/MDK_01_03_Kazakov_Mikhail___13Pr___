@@ -5,15 +5,139 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#FCFCFC"
+    tools:context=".presentations.MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="Звукозапись"
+        android:textColor="#633E23"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="20dp"
+        android:columnCount="1"
+        android:background="@drawable/background_grid"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/bthPlay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_record">
+
+                <ImageView
+                    android:id="@+id/bthPlayIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/play"
+                    app:tint="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Голосовая запись"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:18"
+                        android:textColor="#909090"
+                        android:fontFamily="@font/roboto"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:text="20.01.2026 14:20"
+                        android:textColor="#909090"
+                        android:fontFamily="@font/roboto"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E6E6E6"/>
+            </LinearLayout>
+        </LinearLayout>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="60dp"
+        android:columnCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/bthRecord"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/background_record">
+
+            <LinearLayout
+                android:id="@+id/bthRecordIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_grid"
+                android:backgroundTint="#EA4E4F"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bthPause"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/pause"
+            android:tint="@color/black"
+            android:visibility="invisible" />
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
