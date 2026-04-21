@@ -10,6 +10,7 @@ public class PlayerHelper {
         try {
             MediaPlayer = new MediaPlayer();
             MediaPlayer.setDataSource(pathFile);
+            MediaPlayer.prepare();
             MediaPlayer.start();
         }catch (Exception e){
             Log.e("PLAY", e.getMessage());

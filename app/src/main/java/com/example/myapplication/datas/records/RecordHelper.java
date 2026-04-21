@@ -8,6 +8,7 @@ import java.io.File;
 public class RecordHelper {
     public MediaRecorder MediaRecord;
     public  Boolean isPause = false;
+    public boolean isRecording = false;
     public void ResumeRecord(){
         if (MediaRecord != null){
             MediaRecord.resume();
@@ -15,10 +16,19 @@ public class RecordHelper {
         }
     }
 
-    public void StopRecord(){
+    public void StopRecord() {
         if (MediaRecord != null) {
-            MediaRecord.release();
-            MediaRecord = null;
+            try {
+                MediaRecord.stop();
+            } catch (IllegalStateException e) {
+                // Игнорируем, если уже остановлен
+            } finally {
+                MediaRecord.release();
+                MediaRecord = null;
+                // Сбрасываем флаги
+                isRecording = false;
+                isPause = false;
+            }
         }
     }
 
@@ -39,6 +49,9 @@ public class RecordHelper {
             MediaRecord.setOutputFile(pathFile);
             MediaRecord.prepare();
             MediaRecord.start();
+
+            isPause = false;
+            isRecording = true;
         }catch (Exception e){
             Log.e("RECORD", e.getMessage());
         }
